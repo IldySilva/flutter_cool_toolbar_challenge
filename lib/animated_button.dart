@@ -25,7 +25,7 @@ class _AnimatedButtonState extends State<AnimatedButton>
   }
 
   double containerWidth = 65;
-  Offset containerOffSet=const Offset(0, 0);
+  Offset containerOffSet = const Offset(0, 0);
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
@@ -49,14 +49,13 @@ class _AnimatedButtonState extends State<AnimatedButton>
                       onLongPressDown: (v) {
                         setState(() {
                           containerWidth = 65 * 2.5;
-                          containerOffSet=const Offset(20, 0);
+                          containerOffSet = const Offset(20, 0);
                         });
                       },
                       onLongPressEnd: (v) {
                         setState(() {
                           containerWidth = 65;
-                          containerOffSet=const Offset(0, 0);
-
+                          containerOffSet = const Offset(0, 0);
                         });
                       },
                       child: Row(
@@ -66,6 +65,9 @@ class _AnimatedButtonState extends State<AnimatedButton>
                             widget.item.icon,
                             color: Colors.white,
                           ),
+                          if(containerWidth!=65)
+                          AnimatedContainer(
+                              duration: const Duration(milliseconds: 400),child: Text(widget.item.label,style: const TextStyle(color: Colors.white),))
                         ],
                       ),
                     ),
