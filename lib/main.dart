@@ -33,32 +33,45 @@ class App extends StatelessWidget {
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.all(20.0),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 20,
-                spreadRadius: 4,
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 20,
+                    spreadRadius: 4,
+                  ),
+                ],
               ),
-            ],
+              width: 80,
+              height: 500,
+
+            ),
           ),
-          width: 80,
-          height: 500,
-          child: ListView.builder(
-              itemCount: iconList.length,
-              physics: const BouncingScrollPhysics(),
-              cacheExtent: 0,
-              itemBuilder: (ctx, index) {
-                return AnimatedButton(
-                  item: iconList[index],
-                );
-              }),
-        ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: SizedBox(
+              width: 300,
+              height: 500,
+              child: ListView.builder(
+                  itemCount: iconList.length,
+                  physics:  const BouncingScrollPhysics(),
+                  cacheExtent: 0,
+                  itemBuilder: (ctx, index) {
+                    return AnimatedButton(
+                      item: iconList[index],
+                    );
+                  }),
+            ),
+          ),
+
+        ],
       ),
     ));
   }
